@@ -18,6 +18,7 @@
 		F2789F361F9B9DE900421BF8 /* FPCWineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2789F341F9B9DE900421BF8 /* FPCWineViewController.xib */; };
 		F2789F3B1F9BA2F700421BF8 /* bembibre.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2789F391F9BA2F700421BF8 /* bembibre.jpg */; };
 		F2789F3C1F9BA2F700421BF8 /* splitView_score_glass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2789F3A1F9BA2F700421BF8 /* splitView_score_glass@2x.png */; };
+		F2C33A9A1FAC929000E22266 /* FPCWineryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C33A991FAC929000E22266 /* FPCWineryTableViewController.m */; };
 		F2D3C27F1F9CBEAC00614E2F /* FPCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D3C27D1F9CBEAC00614E2F /* FPCWebViewController.m */; };
 		F2D3C2801F9CBEAC00614E2F /* FPCWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D3C27E1F9CBEAC00614E2F /* FPCWebViewController.xib */; };
 		F2D3C2B01F9E181F0010996D /* zarate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2D3C2AE1F9E181F0010996D /* zarate.jpg */; };
@@ -43,6 +44,8 @@
 		F2789F341F9B9DE900421BF8 /* FPCWineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FPCWineViewController.xib; sourceTree = "<group>"; };
 		F2789F391F9BA2F700421BF8 /* bembibre.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bembibre.jpg; sourceTree = "<group>"; };
 		F2789F3A1F9BA2F700421BF8 /* splitView_score_glass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splitView_score_glass@2x.png"; sourceTree = "<group>"; };
+		F2C33A981FAC929000E22266 /* FPCWineryTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPCWineryTableViewController.h; sourceTree = "<group>"; };
+		F2C33A991FAC929000E22266 /* FPCWineryTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPCWineryTableViewController.m; sourceTree = "<group>"; };
 		F2D3C27C1F9CBEAC00614E2F /* FPCWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPCWebViewController.h; sourceTree = "<group>"; };
 		F2D3C27D1F9CBEAC00614E2F /* FPCWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPCWebViewController.m; sourceTree = "<group>"; };
 		F2D3C27E1F9CBEAC00614E2F /* FPCWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FPCWebViewController.xib; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				F2D3C27C1F9CBEAC00614E2F /* FPCWebViewController.h */,
 				F2D3C27D1F9CBEAC00614E2F /* FPCWebViewController.m */,
 				F2D3C27E1F9CBEAC00614E2F /* FPCWebViewController.xib */,
+				F2C33A981FAC929000E22266 /* FPCWineryTableViewController.h */,
+				F2C33A991FAC929000E22266 /* FPCWineryTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				F2789F351F9B9DE900421BF8 /* FPCWineViewController.m in Sources */,
 				F2789F301F9B9A0700421BF8 /* FPCWineModel.m in Sources */,
 				F23B472E1F9A58A90084782B /* AppDelegate.m in Sources */,
+				F2C33A9A1FAC929000E22266 /* FPCWineryTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "FPCWineViewController.h"
 #import "FPCWineModel.h"
 #import "FPCWebViewController.h"
+#import "FPCWineryTableViewController.h"
 
 //@interface FPCWineViewController ()
 //
@@ -98,7 +99,7 @@
     [self.notesLabel setNumberOfLines:0];
     self.photoView.image = self.modelWine.photo;
     [self displayRaiting: self.modelWine.rating];
-    self.webButton.enabled = (BOOL)self.modelWine.wineCompanyWeb;
+    //self.webButton.enabled = (BOOL)self.modelWine.wineCompanyWeb;
 }
 -(void) clearRatings{
     for (UIImageView *imgView in self.ratingView){
@@ -145,6 +146,16 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
+
+#pragma mark - WineryTableViewControllerDelegate
+-(void) wineryTableViewController:(FPCWineryTableViewController *)wineryVC
+                    didSelectWine:(FPCWineModel *) aWine{
+    
+    self.modelWine = aWine;
+    self.title = aWine.name;
+    [self syncModelWineWithView];
+    
+}
 
 
 @end

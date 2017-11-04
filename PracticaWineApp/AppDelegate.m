@@ -60,41 +60,8 @@
     
     // Delegados
     splitVC.delegate = wineVC;
+    wineryVC.idDelegate = wineVC;
     
-    // END SECTION EIGTH
-    
-    // Creamos la vista que maneja la interfaz de usuario.
-    // FPCMainViewController *mainVC = [FPCMainViewController new];
-    
-    // Controller one in UITabBarController.
-    /*
-    FPCWineViewController *wineTintoVC = [[FPCWineViewController alloc] initWithModel:tintorro];
-    FPCWineViewController *wineAlbarinnoVC = [[FPCWineViewController alloc] initWithModel:albarinno];
-    FPCWineViewController *wineChampagneVC = [[FPCWineViewController alloc] initWithModel:champagne];
-    */
-    
-    // Controller two in UITabBarController.
-    //FPCWebViewController *webWineVC = [[FPCWebViewController alloc] initWithModel:tintorro];
-    
-    /* Combinador example one
-    // Create the combinador UITabBarController
-    UITabBarController *tabBarVC = [[UITabBarController alloc] init];
-    // add at UITabBarController
-    tabBarVC.viewControllers = @[wineVC, webWineVC];
-    */
-    
-    
-    // Create the combinador UITabBarController
-    /*
-    UINavigationController *navTintoVC = [[UINavigationController alloc] initWithRootViewController:wineTintoVC];
-    UINavigationController *navAlbarinnoVC = [[UINavigationController alloc] initWithRootViewController:wineAlbarinnoVC];
-    UINavigationController *navChampageVC = [[UINavigationController alloc] initWithRootViewController:wineChampagneVC];
-   */
-    // Create the combinador
-    /*
-    UITabBarController *tabVC = [[UITabBarController alloc] init];
-    tabVC.viewControllers = @[navTintoVC, navAlbarinnoVC, navChampageVC];
-    */
     // Override point for customization after application launch.
     self.window.rootViewController = splitVC ;
     self.window.backgroundColor = [UIColor whiteColor];

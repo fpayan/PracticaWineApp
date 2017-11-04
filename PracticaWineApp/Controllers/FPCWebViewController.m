@@ -7,6 +7,8 @@
 //
 
 #import "FPCWebViewController.h"
+#import "FPCWineryTableViewController.h"
+
 
 @interface FPCWebViewController ()
 
@@ -47,9 +49,37 @@
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     // Pintar view apartir de la barra de menú.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self displayURL: self.webWineModel.wineCompanyWeb];
+    
+    // Alta en las notificaciones
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(wineDidChange:)
+                   name:NEW_WINE_NOTIFICATION_NAME
+                 object:nil];
+    
+    
+}
+
+
+-(void)wineDidChange:(NSNotification *) notification{
+    NSDictionary *dict = [notification userInfo];
+    FPCWineModel *newWine = [dict objectForKey:WINE_KEY];
+    
+    // Actualizar el model
+    self.webWineModel = newWine;
+    [self displayURL:self.webWineModel.wineCompanyWeb];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    // Baja en las notificaciones
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UIWebViewDelegate

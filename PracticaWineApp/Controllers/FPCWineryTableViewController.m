@@ -168,7 +168,7 @@ titleForHeaderInSection:(NSInteger)section
     // Suponemos que estamos en un Navigation Controller.
     // Averiguamos de que vino se trata.
     FPCWineModel *wine = [self wineForIndexPath:indexPath];
-    /*
+    
     if(indexPath.section == RED_WINE_SECTION){
         wine = [self.modelWinery redWineAtIndex:(int)indexPath.row];
     }else if(indexPath.section == WHITE_WINE_SECTION){
@@ -176,12 +176,16 @@ titleForHeaderInSection:(NSInteger)section
     }else {
         wine = [self.modelWinery otherWineAtIndex:(int)indexPath.row];
     }
-     */
-    // Creamos un controlador para dicho vino.
-    FPCWineViewController *wineVController = [[FPCWineViewController alloc] initWithModel:wine];
     
-    // Hacemos un push al navigation controller dentro del cual estamos.
-    [self.navigationController pushViewController:wineVController animated:YES];
+    [self.idDelegate wineryTableViewController:self didSelectWine:wine];
+    
+    // Crear Notificacion
+    NSNotification *broadcast = [NSNotification notificationWithName:NEW_WINE_NOTIFICATION_NAME
+                                                              object:self
+                                                            userInfo:@{WINE_KEY: wine}];
+    // Add notification
+    [[NSNotificationCenter defaultCenter] postNotification:broadcast];
+    
 }
 
 #pragma mark -  AGTWineryTableViewControllerDelegate

@@ -16,9 +16,10 @@
 
 @implementation FPCWineryTableViewController
 
--(id) initWithModel:(FPCWineryModel *) aModel style:(UITableViewStyle *) aStyle{
+-(id) initWithModel:(FPCWineryModel *) aModel style:(UITableViewStyle) aStyle{
     if (self = [super initWithStyle:(UITableViewStyle)aStyle]) {
         _modelWinery = aModel;
+        self.title = @"Wine App FPC";
     }
     return self;
 }
@@ -26,12 +27,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    UIColor *bg = [UIColor colorWithRed:0.5
+                                  green:0
+                                   blue:0.13
+                                  alpha:1];
+    [self.navigationController.navigationBar setBarTintColor:bg];
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {

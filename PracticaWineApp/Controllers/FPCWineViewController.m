@@ -51,13 +51,16 @@
     [super viewWillAppear:animated];
     [self syncModelWineWithView];
     // Pintar view apartir de la barra de menú.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     // Change color tabBar.
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.5
                                                                            green:0
                                                                             blue:0.13
                                                                            alpha:1];
     
+    [self syncModelWineWithView];
 }
 
 
@@ -92,9 +95,10 @@
     self.originLabel.text = self.modelWine.origin;
     self.grapesLabel.text = [self arrayToString: self.modelWine.grapes];
     self.notesLabel.text = self.modelWine.notes;
+    [self.notesLabel setNumberOfLines:0];
     self.photoView.image = self.modelWine.photo;
-    
     [self displayRaiting: self.modelWine.rating];
+    self.webButton.enabled = (BOOL)self.modelWine.wineCompanyWeb;
 }
 -(void) clearRatings{
     for (UIImageView *imgView in self.ratingView){
@@ -102,6 +106,7 @@
     }
     
 }
+
 
 -(void) displayRaiting: (int) aRating{
     [self clearRatings];
@@ -123,7 +128,22 @@
     return repr;
 }
 
+#pragma mark - UISplitViewControllerDelegate
 
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    self.navigationItem.rightBarButtonItem = nil;
+}
 
 
 

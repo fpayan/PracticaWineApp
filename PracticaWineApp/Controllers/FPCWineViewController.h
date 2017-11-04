@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FPCWineModel.h"
 
-@interface FPCWineViewController : UIViewController
+@interface FPCWineViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wineryNameLabel;
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *grapesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notesLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
-
+@property (weak, nonatomic) IBOutlet UIButton *webButton;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *ratingView;
 
 
@@ -27,6 +27,5 @@
 -(id) initWithModel: (FPCWineModel *) aModelWine;
 
 -(IBAction)displayWeb:(id)sender;
-
 
 @end

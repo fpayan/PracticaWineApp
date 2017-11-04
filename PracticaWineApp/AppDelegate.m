@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "FPCMainViewController.h"
+//#import "FPCMainViewController.h"
 //
 #import "FPCWineViewController.h"
-#import "FPCWineModel.h"
+//#import "FPCWineModel.h"
 
-#import "FPCWebViewController.h"
+//#import "FPCWebViewController.h"
 //
 #import "FPCWineryModel.h"
 #import "FPCWineryTableViewController.h"
@@ -34,12 +34,34 @@
     FPCWineryModel *modelWinery = [[FPCWineryModel alloc] init];
     
     // Creamos el controlador
+    // START SECTION SEVEN
+    /*
     FPCWineryTableViewController *wineryVController = [[FPCWineryTableViewController alloc] initWithModel:modelWinery
         style:UITableViewStylePlain];
-    // Creamos una Navigation
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:wineryVController];
+     
+     // Creamos una Navigation
+     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:wineryVController];
+     // END Para table view
+    */
+    // END SECTION SEVEN
     
-    /* END Para la table view */
+    /* START SECTION EIGTH */
+    // Controladores
+    FPCWineryTableViewController *wineryVC = [[FPCWineryTableViewController alloc] initWithModel:modelWinery style:UITableViewStylePlain];
+    FPCWineViewController *wineVC = [[FPCWineViewController alloc] initWithModel:[modelWinery redWineAtIndex:0]];
+    
+    // Combinadores
+    UINavigationController *wineNav = [[UINavigationController alloc] initWithRootViewController:wineVC];
+    UINavigationController *wineryNav = [[UINavigationController alloc] initWithRootViewController:wineryVC];
+    
+    UISplitViewController *splitVC = [[UISplitViewController alloc] init];
+    splitVC.viewControllers = @[wineryNav, wineNav];
+    splitVC.view.tintColor = [UIColor whiteColor];
+    
+    // Delegados
+    splitVC.delegate = wineVC;
+    
+    // END SECTION EIGTH
     
     // Creamos la vista que maneja la interfaz de usuario.
     // FPCMainViewController *mainVC = [FPCMainViewController new];
@@ -74,7 +96,7 @@
     tabVC.viewControllers = @[navTintoVC, navAlbarinnoVC, navChampageVC];
     */
     // Override point for customization after application launch.
-    self.window.rootViewController = navVC;
+    self.window.rootViewController = splitVC ;
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];

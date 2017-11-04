@@ -11,6 +11,9 @@
 		F23B47301F9A58A90084782B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F23B472F1F9A58A90084782B /* Assets.xcassets */; };
 		F23B47361F9A58A90084782B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B47351F9A58A90084782B /* main.m */; };
 		F23B473D1F9A59BC0084782B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23B473C1F9A59BC0084782B /* LaunchScreen.xib */; };
+		F26303781FAE096A00C87B37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26303751FAE093600C87B37 /* UIKit.framework */; };
+		F26303791FAE097100C87B37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26303761FAE094D00C87B37 /* Foundation.framework */; };
+		F263037A1FAE097500C87B37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26303771FAE095D00C87B37 /* CoreGraphics.framework */; };
 		F2789F2C1F9B5B1900421BF8 /* FPCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2789F2A1F9B5B1900421BF8 /* FPCMainViewController.m */; };
 		F2789F2D1F9B5B1900421BF8 /* FPCMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2789F2B1F9B5B1900421BF8 /* FPCMainViewController.xib */; };
 		F2789F301F9B9A0700421BF8 /* FPCWineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2789F2F1F9B9A0700421BF8 /* FPCWineModel.m */; };
@@ -34,6 +37,9 @@
 		F23B47341F9A58A90084782B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F23B47351F9A58A90084782B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F23B473C1F9A59BC0084782B /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		F26303751FAE093600C87B37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F26303761FAE094D00C87B37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F26303771FAE095D00C87B37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2789F291F9B5B1900421BF8 /* FPCMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPCMainViewController.h; sourceTree = "<group>"; };
 		F2789F2A1F9B5B1900421BF8 /* FPCMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPCMainViewController.m; sourceTree = "<group>"; };
 		F2789F2B1F9B5B1900421BF8 /* FPCMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FPCMainViewController.xib; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F26303781FAE096A00C87B37 /* UIKit.framework in Frameworks */,
+				F26303791FAE097100C87B37 /* Foundation.framework in Frameworks */,
+				F263037A1FAE097500C87B37 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +80,7 @@
 			children = (
 				F23B472B1F9A58A90084782B /* PracticaWineApp */,
 				F23B472A1F9A58A90084782B /* Products */,
+				F26303741FAE093600C87B37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +109,16 @@
 				F2789F2B1F9B5B1900421BF8 /* FPCMainViewController.xib */,
 			);
 			path = PracticaWineApp;
+			sourceTree = "<group>";
+		};
+		F26303741FAE093600C87B37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F26303771FAE095D00C87B37 /* CoreGraphics.framework */,
+				F26303761FAE094D00C87B37 /* Foundation.framework */,
+				F26303751FAE093600C87B37 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F2789F311F9B9A1000421BF8 /* Models */ = {
@@ -338,8 +358,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48V8HEX3A9;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PracticaWineApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.esoftwar.PracticaWineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,8 +373,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 48V8HEX3A9;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PracticaWineApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.esoftwar.PracticaWineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

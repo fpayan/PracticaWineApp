@@ -13,6 +13,9 @@
 #import "FPCWineModel.h"
 
 #import "FPCWebViewController.h"
+//
+#import "FPCWineryModel.h"
+#import "FPCWineryTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,50 +29,27 @@
     // Creamos una UIView
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    /* START Para la table view */
     // Creamos un modelo
-    FPCWineModel *tintorro = [FPCWineModel initWithName:@"Bembibre"
-                                        wineCompanyName:@"Dominio de Tares"
-                                                   type:@"Tinto"
-                                                 origin:@"El Bierzo"
-                                                 grapes:@[@"Mencía"]
-                                         wineCompanyWeb:[NSURL URLWithString:@"http://www.dominiodetares.com/index.php/es/vinos/baltos/74-bembibrevinos"]
-                                                  notes:@"Este vino muestra toda la complejidad y la elegancia de la variedad Mencía. En fase visual luce un color rojo picota muy cubierto con tonalidades violáceas en el menisco. En nariz aparecen recuerdos frutales muy intensos de frutas rojas (frambuesa, cereza) y una potente ciruela negra, así como tonos florales de la gama de las rosas y violetas, vegetales muy elegantes y complementarios, hojarasca verde, tabaco y maderas aromáticas (sándalo) que le brindan un toque ciertamente perfumado."
-                                                 rating:5
-                                                  photo:[UIImage imageNamed:@"bembibre.jpg"]];
+    FPCWineryModel *modelWinery = [[FPCWineryModel alloc] init];
     
+    // Creamos el controlador
+    FPCWineryTableViewController *wineryVController = [[FPCWineryTableViewController alloc] initWithModel:modelWinery
+        style:UITableViewStylePlain];
+    // Creamos una Navigation
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:wineryVController];
     
-    // Creamos un modelo
-    FPCWineModel *albarinno = [FPCWineModel initWithName:@"Zárate"
-                                        wineCompanyName:@"Zárate"
-                                                   type:@"White"
-                                                 origin:@"Rias Bajas"
-                                                 grapes:@[@"Albariño"]
-                                         wineCompanyWeb:[NSURL URLWithString:@"http://bodegas-zarate.com/productos/vinos/albarino-zarate/"]
-                                                   notes:@"El ZARATE Albariño 2015 es un vino fresco, equilibrado y elegante, su mineralizad y acidez natural son los elementos clave para este equilibrio. Los viñedos ZARATE tienen una media de edad de 35 años.\n La climatología del año 2015: a nivel de temperatura podemos calificarlo como un año cálido. La primavera fue cálida con unas temperaturas ligeramente por encima de los normales destacando asimismo la ausencia de temperaturas bajas, esto provocó un adelanto de la brotación con respecto a campañas anteriores de unas 2 semanas. Junio y Julio también fueron meses cálidos pero agosto y septiembre fueron fríos. En cuanto a precipitaciones fue un año seco con una disminución del 25% por debajo del valor climático esperado, junio y julio fueron muy secos llegando a provocar un fuerte stress hídrico en la planta. El cambio llegó en Agosto y septiembre que resultaron muy húmedos."
-                                                 rating:4
-                                                  photo:[UIImage imageNamed:@"zarate.jpg"]];
-    
-    // Creamos un modelo
-    FPCWineModel *champagne = [FPCWineModel initWithName:@"Contes de Champagne"
-                                        wineCompanyName:@"Champagne Taittinger"
-                                                   type:@"Other"
-                                                 origin:@"Champagne"
-                                                 grapes:@[@"Chardonnay"]
-                                         wineCompanyWeb:[NSURL URLWithString:@"http://www.taittinger.fr"]
-                                                  notes:@"Es un vino con una frescura extraordinaria, aromas a frutas rojas como fresas, frambuesas o grosellas, es un vino ligero y muy bien equilibrado con una acidez extraordinaria.\n Pruébalo con sushi, ostras o marisco, pero fundamentalmente le va bien al salmón a la plancha o ahumado y al caviar!"
-                                                 rating:5
-                                                  photo:[UIImage imageNamed:@"champagne.jpg"]];
-    
-    
-    
+    /* END Para la table view */
     
     // Creamos la vista que maneja la interfaz de usuario.
     // FPCMainViewController *mainVC = [FPCMainViewController new];
     
     // Controller one in UITabBarController.
+    /*
     FPCWineViewController *wineTintoVC = [[FPCWineViewController alloc] initWithModel:tintorro];
     FPCWineViewController *wineAlbarinnoVC = [[FPCWineViewController alloc] initWithModel:albarinno];
     FPCWineViewController *wineChampagneVC = [[FPCWineViewController alloc] initWithModel:champagne];
+    */
     
     // Controller two in UITabBarController.
     //FPCWebViewController *webWineVC = [[FPCWebViewController alloc] initWithModel:tintorro];
@@ -83,17 +63,20 @@
     
     
     // Create the combinador UITabBarController
+    /*
     UINavigationController *navTintoVC = [[UINavigationController alloc] initWithRootViewController:wineTintoVC];
     UINavigationController *navAlbarinnoVC = [[UINavigationController alloc] initWithRootViewController:wineAlbarinnoVC];
     UINavigationController *navChampageVC = [[UINavigationController alloc] initWithRootViewController:wineChampagneVC];
-   
+   */
     // Create the combinador
+    /*
     UITabBarController *tabVC = [[UITabBarController alloc] init];
     tabVC.viewControllers = @[navTintoVC, navAlbarinnoVC, navChampageVC];
-    
+    */
     // Override point for customization after application launch.
+    self.window.rootViewController = navVC;
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = tabVC;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

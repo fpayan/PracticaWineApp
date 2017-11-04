@@ -82,13 +82,13 @@
 
 
 // Implement method
--(FPCWineModel *) redWineAtIndex: (int) index{
+-(FPCWineModel *) redWineAtIndex: (NSUInteger) index{
     return [self.redWines objectAtIndex:index];
 }
--(FPCWineModel *) whiteWineAtIndex: (int) index{
+-(FPCWineModel *) whiteWineAtIndex: (NSUInteger) index{
     return [self.whiteWines objectAtIndex:index];
 }
--(FPCWineModel *) otherWineAtIndex: (int) index{
+-(FPCWineModel *) otherWineAtIndex: (NSUInteger) index{
     return [self.otherWines objectAtIndex:index];
 }
 

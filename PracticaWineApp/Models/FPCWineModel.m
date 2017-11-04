@@ -86,7 +86,20 @@
               type: (NSString *) aType
             origin: (NSString *) anOrigin{
     
-    return [self initWithName:aName wineCompanyName:aWineCompanyName type:aType origin:anOrigin grapes:Nil wineCompanyWeb:Nil notes:@"" rating:NO_RATING photo:Nil];
+    return [self initWithName:aName
+              wineCompanyName:aWineCompanyName
+                         type:aType
+                       origin:anOrigin
+                       grapes:nil
+               wineCompanyWeb:nil
+                        notes:@""
+                       rating:NO_RATING
+                        photo:nil];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Name: %@\nCompany name: %@\nType: %@\nOrigin: %@\nGrapes: %@\nWine company web: %@\nNotes: %@\nRating: %d\n", self.name, self.wineCompanyName, self.type, self.origin, self.grapes, self.wineCompanyWeb, self.notes, self.rating];
 }
 
 

@@ -7,12 +7,22 @@
 //
 
 #import "FPCWineryTableViewController.h"
+#import "FPCWineViewController.h"
+#import "FPCWineModel.h"
 
 @interface FPCWineryTableViewController ()
 
 @end
 
 @implementation FPCWineryTableViewController
+
+-(id) initWithModel:(FPCWineryModel *) aModel style:(UITableViewStyle *) aStyle{
+    if (self = [super initWithStyle:(UITableViewStyle)aStyle]) {
+        _modelWinery = aModel;
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,25 +42,73 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+// #warning Incomplete implementation, return the number of sections
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+// #warning Incomplete implementation, return the number of rows
+    NSInteger count = 0;
+    if (section == RED_WINE_SECTION) {
+        count = (NSInteger) [self.modelWinery redWineCount];
+    }else if (section == WHITE_WINE_SECTION){
+        count = (NSInteger) [self.modelWinery whiteWineCount];
+    }else{
+        count = (NSInteger) [self.modelWinery otherWineCount];
+    }
+    return count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    //static NSString *CellIdentifier = @"reuseIdentifier";
+    static NSString *CellIdentifier = @"WineCell";
     
-    return cell;
+    // Averiguamos de qué vino se trata
+    FPCWineModel *wine = [self wineForIndexPath:indexPath];
+    // Creamos una celda
+    UITableViewCell *wineCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    // It've cell ?
+    if (wineCell == nil) {
+        // create cell if not exist
+        wineCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    // To know which model we are talking about.
+    /*
+    if(indexPath.section == RED_WINE_SECTION){
+        wine = [self.modelWinery redWineAtIndex:(int)indexPath.row];
+    }else if(indexPath.section == WHITE_WINE_SECTION){
+        wine = [self.modelWinery whiteWineAtIndex:(int)indexPath.row];
+    }else {
+        wine = [self.modelWinery otherWineAtIndex:(int)indexPath.row];
+    }
+    */
+    // Sincronizamos modelo con vista (celda)..
+    wineCell.imageView.image = wine.photo;
+    wineCell.textLabel.text = wine.name;
+    wineCell.detailTextLabel.text = wine.wineCompanyName;
+    //
+    return wineCell;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName = nil;
+    
+    if (section == RED_WINE_SECTION) {
+        sectionName = @"Tinto";
+    }
+    else if (section == WHITE_WINE_SECTION){
+        sectionName = @"Blanco";
+    }
+    else{
+        sectionName = @"Otros";
+    }
+    
+    return sectionName;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -100,6 +158,57 @@
 /* Add events */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    // Suponemos que estamos en un Navigation Controller.
+    // Averiguamos de que vino se trata.
+    FPCWineModel *wine = [self wineForIndexPath:indexPath];
+    /*
+    if(indexPath.section == RED_WINE_SECTION){
+        wine = [self.modelWinery redWineAtIndex:(int)indexPath.row];
+    }else if(indexPath.section == WHITE_WINE_SECTION){
+        wine = [self.modelWinery whiteWineAtIndex:(int)indexPath.row];
+    }else {
+        wine = [self.modelWinery otherWineAtIndex:(int)indexPath.row];
+    }
+     */
+    // Creamos un controlador para dicho vino.
+    FPCWineViewController *wineVController = [[FPCWineViewController alloc] initWithModel:wine];
+    
+    // Hacemos un push al navigation controller dentro del cual estamos.
+    [self.navigationController pushViewController:wineVController animated:YES];
 }
+
+#pragma mark -  AGTWineryTableViewControllerDelegate
+
+- (void)wineryTableViewController:(FPCWineryTableViewController *)aWineryVC
+                    didSelectWine:(FPCWineModel *)aWine
+{
+    // Crear el controlador
+    FPCWineViewController *wineVC = [[FPCWineViewController alloc] initWithModel:aWine];
+    
+    // Hacer un push
+    [self.navigationController pushViewController:wineVC
+                                         animated:YES];
+}
+
+#pragma mark -  Utils
+
+- (FPCWineModel *)wineForIndexPath:(NSIndexPath *)indexPath
+{
+    // Averiguamos de qué vino se trata
+    FPCWineModel *wine = nil;
+    
+    if (indexPath.section == RED_WINE_SECTION) {
+        wine =  [self.modelWinery redWineAtIndex:indexPath.row];
+    }
+    else if (indexPath.section == WHITE_WINE_SECTION) {
+        wine = [self.modelWinery whiteWineAtIndex:indexPath.row];
+    }
+    else {
+        wine = [self.modelWinery otherWineAtIndex:indexPath.row];
+    }
+    
+    return wine;
+}
+
 
 @end
